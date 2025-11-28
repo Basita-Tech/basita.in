@@ -1,88 +1,93 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
-import { Code2, BarChart3, Zap, Shield, Users, TrendingUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { MdOutlineWeb, MdOutlineSmartphone, MdOutlineCloudQueue, MdOutlineAnalytics, MdOutlineAccountBalance, MdOutlineAttachMoney } from "react-icons/md";
+import { BiBrain } from "react-icons/bi";
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { BsArrowRight } from "react-icons/bs";
+
+const services = [
+  {
+    category: "Software Engineering",
+    description: "Scalable, secure, and high-performance digital solutions.",
+    items: [
+      { title: "Web Development", desc: "Enterprise-grade web applications.", icon: MdOutlineWeb },
+      { title: "Mobile Solutions", desc: "Native iOS & Android development.", icon: MdOutlineSmartphone },
+      { title: "Cloud Infrastructure", desc: "AWS/Azure architecture & migration.", icon: MdOutlineCloudQueue },
+    ]
+  },
+  {
+    category: "Data & AI",
+    description: "Transforming raw data into strategic business intelligence.",
+    items: [
+      { title: "AI Integration", desc: "LLM & Predictive models.", icon: BiBrain },
+      { title: "Data Analytics", desc: "PowerBI & Tableau dashboards.", icon: MdOutlineAnalytics },
+      { title: "Automation", desc: "RPA & Workflow optimization.", icon: MdOutlineCloudQueue }, // Using cloud icon as placeholder for automation if specific one not found
+    ]
+  },
+  {
+    category: "Financial Services",
+    description: "Precision accounting and strategic financial planning.",
+    items: [
+      { title: "Bookkeeping", desc: "Daily ledger & reconciliation.", icon: MdOutlineAccountBalance },
+      { title: "Payroll & Tax", desc: "US GAAP compliant processing.", icon: MdOutlineAttachMoney },
+      { title: "Virtual CFO", desc: "Strategic financial advisory.", icon: HiOutlineOfficeBuilding },
+    ]
+  }
+];
 
 export function ServicesOverview() {
   return (
-    <section
-      id="services"
-      className="relative w-full py-16 md:py-24 bg-muted/50"
-    >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Our Core Services
+    <section id="services" className="relative w-full py-24 bg-muted/30">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center space-y-4 mb-20">
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
+            Our Expertise
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive solutions designed to drive your business forward
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive technology and financial solutions designed for the modern enterprise.
           </p>
         </div>
 
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
-            <Code2 className="h-6 w-6 text-primary" />
-            Software Development Services
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 space-y-3 border-l-4 border-l-primary hover:shadow-lg transition-shadow">
-              <Zap className="h-8 w-8 text-primary" />
-              <h4 className="font-semibold text-lg">
-                Custom Software Solutions
-              </h4>
-              <p className="text-muted-foreground text-sm">
-                Tailored applications built to your specific business needs with
-                cutting-edge technology and innovation.
-              </p>
-            </Card>
-            <Card className="p-6 space-y-3 border-l-4 border-l-primary hover:shadow-lg transition-shadow">
-              <TrendingUp className="h-8 w-8 text-primary" />
-              <h4 className="font-semibold text-lg">Automation & Workflow</h4>
-              <p className="text-muted-foreground text-sm">
-                Streamline operations with intelligent automation tools and
-                optimized workflow systems.
-              </p>
-            </Card>
-            <Card className="p-6 space-y-3 border-l-4 border-l-primary hover:shadow-lg transition-shadow">
-              <Users className="h-8 w-8 text-primary" />
-              <h4 className="font-semibold text-lg">Digital Transformation</h4>
-              <p className="text-muted-foreground text-sm">
-                Consulting services to modernize your business with AI-driven
-                technologies and strategic guidance.
-              </p>
-            </Card>
-          </div>
-        </div>
+        <div className="space-y-24">
+          {services.map((category, catIndex) => (
+            <div key={catIndex} className="space-y-10">
+              <div className="border-l-4 border-primary pl-6">
+                <h3 className="text-3xl font-bold text-foreground">{category.category}</h3>
+                <p className="text-lg text-muted-foreground mt-2">{category.description}</p>
+              </div>
 
-        <div>
-          <h3 className="text-2xl font-bold text-foreground mb-8 flex items-center gap-3">
-            <BarChart3 className="h-6 w-6 text-secondary" />
-            Bookkeeping & Accounting Outsourcing
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 space-y-3 border-l-4 border-l-secondary hover:shadow-lg transition-shadow">
-              <Shield className="h-8 w-8 text-secondary" />
-              <h4 className="font-semibold text-lg">End-to-End Bookkeeping</h4>
-              <p className="text-muted-foreground text-sm">
-                Daily ledger maintenance, AP/AR management, bank reconciliation,
-                and comprehensive financial reporting.
-              </p>
-            </Card>
-            <Card className="p-6 space-y-3 border-l-4 border-l-secondary hover:shadow-lg transition-shadow">
-              <TrendingUp className="h-8 w-8 text-secondary" />
-              <h4 className="font-semibold text-lg">Payroll & Tax Support</h4>
-              <p className="text-muted-foreground text-sm">
-                Payroll processing, tax compliance, W-2/1099 preparation with
-                U.S. GAAP expertise.
-              </p>
-            </Card>
-            <Card className="p-6 space-y-3 border-l-4 border-l-secondary hover:shadow-lg transition-shadow">
-              <Users className="h-8 w-8 text-secondary" />
-              <h4 className="font-semibold text-lg">Virtual CFO Services</h4>
-              <p className="text-muted-foreground text-sm">
-                Financial analysis, budgeting, forecasting, and strategic
-                advisory for business growth.
-              </p>
-            </Card>
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {category.items.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="h-full p-8 border border-border bg-card hover:border-primary/50 transition-all duration-300 group shadow-sm hover:shadow-md rounded-xl flex flex-col justify-between">
+                      <div className="space-y-6">
+                        <div className="p-3 w-fit rounded-lg bg-primary/5 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                          <item.icon className="h-8 w-8" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-xl mb-2">{item.title}</h4>
+                          <p className="text-muted-foreground leading-relaxed text-sm">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="mt-8 pt-6 border-t border-border/50 flex items-center text-primary font-semibold text-sm group-hover:translate-x-1 transition-transform cursor-pointer">
+                        Learn More <BsArrowRight className="ml-2 h-4 w-4" />
+                      </div>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

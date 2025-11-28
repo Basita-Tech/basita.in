@@ -2,19 +2,17 @@ import { Navbar } from "@/components/navbar"
 import { Hero } from "@/components/hero"
 import { ServicesOverview } from "@/components/services-overview"
 import { WhyChooseUs } from "@/components/why-choose-us"
+import { ApproachSection } from "@/components/approach-section"
 import { Footer } from "@/components/footer"
 
 export default function Page() {
   return (
-    <main className="min-h-dvh">
-      <div className="relative">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-background to-background" />
-        <Navbar />
-        <Hero />
-      </div>
-
+    <main className="min-h-dvh bg-background text-foreground overflow-x-hidden">
+      <Navbar />
+      <Hero />
       <ServicesOverview />
       <WhyChooseUs />
+      <ApproachSection />
       <Footer />
     </main>
   )
